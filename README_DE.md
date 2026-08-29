@@ -4,7 +4,7 @@
 
 ### **Deine Tactical Intelligence Zentrale für New Eden.**
 
-### **Built to be the most capable tactical intelligence platform for EVE Online.**
+### **Entwickelt mit dem Anspruch, das leistungsfähigste Tactical-Intelligence-Tool für EVE Online zu werden.**
 
 <br>
 
