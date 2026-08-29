@@ -37,6 +37,20 @@ Die Plattform verbindet **Live-Kill-Aktivität in New Eden, mehrere Intel-Channe
 
 ---
 
+# FINDE DIE GEFAHR. FINDE DEN CONTENT.
+
+### **SENTINEL zeigt dir nicht nur, was du meiden solltest – sondern auch, wo New Eden gerade lebt.**
+
+Live-Kill-Aktivität aus New Eden macht aktive Systeme und entstehende Hotspots direkt auf der Tactical Map sichtbar. Dieselbe Intelligence kann eine Mining-Operation, Hauling-Route, PvE-Pocket oder ein Staging-System schützen — oder einem Hunter, Scout oder Roamer helfen, Action zu finden und zu entscheiden, wohin der nächste Flug geht.
+
+SENTINEL ist nicht für nur einen Spielstil gebaut. Es richtet sich an **Miner, Hauler, PvE-Piloten, Explorer, Scouts, Hunter, Roamer, Fleets und Corporations**, die ein klareres taktisches Bild des Raums um sich herum wollen.
+
+> **Dieselbe Intelligence, die einem Miner zeigt, wo er besser nicht hinfliegt, kann einem Roamer zeigen, wo er als Nächstes hinfliegen sollte.**
+
+**Gefahr meiden. Action finden. Den Raum um dich herum verstehen.**
+
+---
+
 # DREI SYSTEME DEFINIEREN SENTINEL
 
 ## 💀 LIVE KILL MAP
@@ -56,13 +70,15 @@ Der Pilot erhält damit unter anderem unmittelbaren Kontext zu:
 
 Die taktische Darstellung lässt sich über Systeme wie Kill Range, Marker Persistence, Pulse-/Radar-Lifetime, Threat-Farben und Alert-Verhalten anpassen.
 
+Das Ergebnis lässt sich in beide Richtungen nutzen: **Gefahr rund um deine Operation erkennen oder New Eden nach aktiven Gebieten und möglichem Content absuchen.**
+
 Ein Kill mehrere Jumps entfernt wird dann wirklich nützlich, wenn du weißt **wo er passiert ist, wie nah er ist und ob seine Route für dich relevant wird.**
 
 ---
 
 ## 🚨 UNIQUE TACTICAL LIVE MAP WARNING SYSTEM
 
-### **Dein Overview zeigt dir, was auf Grid ist. SENTINEL hilft dir zu erkennen, was auf dich zukommt.**
+### **Dein Overview zeigt dir, was auf Grid ist. SENTINEL hilft dir zu verstehen, was dahinter passiert.**
 
 SENTINELs **Unique Tactical Live Map Warning System** ist dafür gebaut, relevante Live-Aktivität in eine aktive Warning-Layer rund um die Position zu verwandeln, die du tatsächlich überwachst.
 
@@ -77,6 +93,8 @@ Es verbindet:
 - native Windows-Audio-Warnungen,
 - getrennte Kill-/Intel-Alertprofile,
 - und Threat-orientierte visuelle Darstellung.
+
+Defensiv sorgt das für frühere Awareness bei Aktivität, die deine Operation betreffen könnte. Offensiv zeigt dasselbe Live-Lagebild, wo sich Action entwickelt und wo der nächste Fight oder Roaming-Stop liegen könnte.
 
 Das Ziel ist einfach: die Zeit zwischen **etwas passiert in New Eden** und **der Pilot versteht, ob es für ihn relevant ist** so kurz wie möglich zu halten.
 
@@ -119,6 +137,34 @@ SYSTEM DOSSIER / ROUTE-KONTEXT
 Das ist die zentrale SENTINEL-Philosophie:
 
 > **Informationen sollen die Reaktionszeit verkürzen – nicht zusätzlichen Lärm erzeugen.**
+
+---
+
+# EINE SPEZIALISIERTE MISSION
+
+Für EVE Online existieren hunderte Tools. Manche berechnen Fits, manche analysieren Märkte, manche planen Industrie, manche zeigen Killboards und manche liefern Karten.
+
+SENTINEL konzentriert sich bewusst auf eine andere Ebene des EVE-Spielens:
+
+### **Taktisches Lagebewusstsein, bevor die Situation auf deinem Grid ankommt.**
+
+Wer bewegt sich? Was stirbt gerade? Wo entwickelt sich Aktivität? Wie weit ist sie entfernt? Kommt sie in Richtung deines Gebiets? Ist das Gefahr — oder genau der Content, den du suchst?
+
+**SENTINEL wurde gebaut, um dir diese Fragen schneller zu beantworten.**
+
+---
+
+# GEBAUT, UM DEIN EVE-TOOLSET ZU ERGÄNZEN
+
+### **SENTINEL wurde nicht entwickelt, um jedes andere EVE-Tool zu ersetzen.**
+
+EVE-Piloten nutzen bereits spezialisierte Drittanbieter-Tools für Fits, Märkte, Industrie, Killboards, Navigation, Fleet Operations und viele andere Aufgaben. SENTINEL ergänzt dieses Setup um eine eigene **Tactical-Intelligence- und Warning-Layer**.
+
+Lass SENTINEL parallel zu EVE, Comms, Maps, Killboards und den Third-Party-Tools laufen, denen du bereits vertraust — oder nutze es allein als deine Tactical Intelligence Zentrale.
+
+### **KEEP YOUR TOOLS. ADD INTELLIGENCE.**
+
+> **Gebaut, um zu dem taktischen Fenster zu werden, das bei jedem Undock einfach mitläuft.**
 
 ---
 
@@ -211,7 +257,9 @@ Dieses öffentliche Repository existiert, damit Piloten Releases, Fortschritt un
 
 **LIVE KILL MAP · UNIQUE TACTICAL LIVE MAP WARNING SYSTEM · MULTI-CHANNEL INTEL MAP**
 
-### **Gefahr sehen. Entfernung kennen. Route beobachten. Reagieren, bevor sie dich erreicht.**
+### **Schütze dich. Finde die Action. Verstehe, was jenseits deines Grids passiert.**
+
+### **KEEP YOUR TOOLS. ADD INTELLIGENCE.**
 
 <br>
 
