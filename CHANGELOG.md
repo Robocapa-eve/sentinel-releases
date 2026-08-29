@@ -46,6 +46,7 @@ The current development track is focused on making SENTINEL safer and more predi
 - 🔐 Added additional protection around local WebSocket connections.
 - ⚙️ Improved dependency hygiene and ongoing vulnerability monitoring.
 - 🧪 Expanded automated validation before changes are accepted into the main development line.
+- 🔔 Improved reliability of native Windows tactical alert playback on the Python 3.12 runtime.
 
 ### Security engineering
 
@@ -56,10 +57,16 @@ The current development track is focused on making SENTINEL safer and more predi
 - Hardened repository exclusions for credentials, tokens, private keys, certificates, signing material and local environment files.
 - Added dedicated `SECURITY.md`, `PRIVACY.md` and a proprietary software license to the private source repository.
 
+### Reliability engineering
+
+- Fixed a Windows native-audio compatibility issue exposed by CI on Python 3.12.
+- Preserved synchronous FIFO alert playback while removing reliance on an unsupported `winsound` synchronization flag.
+- Added a dedicated regression test so the audio worker compatibility issue cannot silently return.
+
 ### Continuous validation
 
 - 🧪 Automated Windows CI now validates SENTINEL on Python 3.12.
-- 🧪 Current automated suite: **85 tests**.
+- 🧪 Current automated suite: **86 tests**.
 - 🧪 Python source compilation is validated automatically.
 - 🧪 Frontend JavaScript syntax is validated automatically.
 - 🧪 Git whitespace/error checks run as part of CI.
