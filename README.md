@@ -37,6 +37,20 @@ It combines **live kill activity across New Eden, multiple Intel channels, tacti
 
 ---
 
+# FIND THE THREAT. FIND THE CONTENT.
+
+### **SENTINEL does not only show you what to avoid — it shows you where New Eden is alive.**
+
+Live kill activity across New Eden makes active systems and developing hotspots visible on the tactical map. The same intelligence can protect a mining operation, hauling route, PvE pocket or staging system — or help a hunter, scout or roamer find activity and decide where to fly next.
+
+SENTINEL is not built around a single play style. It is designed for **miners, haulers, PvE pilots, explorers, scouts, hunters, roamers, fleets and corporations** that want a clearer tactical picture of the space around them.
+
+> **The same intelligence that tells a miner where not to go can tell a roaming pilot where to go next.**
+
+**Avoid the threat. Find the action. Understand the space around you.**
+
+---
+
 # THREE SYSTEMS DEFINE SENTINEL
 
 ## 💀 LIVE KILL MAP
@@ -56,13 +70,15 @@ The pilot can gain immediate context such as:
 
 Tactical presentation is configurable through systems such as Kill range, marker persistence, pulse / radar lifetime, threat colors and alert behavior.
 
+The result can be used both ways: **see danger developing around your operation, or scan New Eden for active areas and potential content.**
+
 A kill several jumps away becomes more useful when you know **where it happened, how close it is and whether the route matters to you.**
 
 ---
 
 ## 🚨 UNIQUE TACTICAL LIVE MAP WARNING SYSTEM
 
-### **Your Overview tells you what's on grid. SENTINEL helps tell you what's coming.**
+### **Your Overview tells you what's on grid. SENTINEL helps you understand what's happening beyond it.**
 
 SENTINEL's **Unique Tactical Live Map Warning System** is designed to transform relevant live activity into an active warning layer around the position you are actually monitoring.
 
@@ -77,6 +93,8 @@ It combines:
 - native Windows audio,
 - separate Kill / Intel alert profiles,
 - and threat-oriented visual presentation.
+
+Used defensively, this provides earlier awareness of activity that may matter to your operation. Used offensively, the same live picture helps show where activity is building and where the next fight or roaming destination may be.
 
 The goal is simple: reduce the time between **something happening in New Eden** and **the pilot understanding whether it matters**.
 
@@ -119,6 +137,34 @@ SYSTEM DOSSIER / ROUTE CONTEXT
 This is the core SENTINEL philosophy:
 
 > **Information should reduce reaction time — not create more noise.**
+
+---
+
+# ONE SPECIALIZED MISSION
+
+There are hundreds of EVE tools. Some calculate fittings, some track markets, some plan industry, some show killboards and some provide maps.
+
+SENTINEL deliberately specializes in another layer of the EVE experience:
+
+### **Tactical awareness before the situation reaches your grid.**
+
+Who is moving? What is dying? Where is activity building? How far away is it? Is it moving toward your area? Is this danger — or the content you are looking for?
+
+**SENTINEL exists to help answer those questions faster.**
+
+---
+
+# BUILT TO COMPLEMENT YOUR EVE TOOLSET
+
+### **SENTINEL is not designed to replace every other EVE tool.**
+
+EVE pilots already use specialized third-party tools for fittings, markets, industry, killboards, navigation, fleet operations and many other jobs. SENTINEL is designed to add a dedicated **tactical intelligence and warning layer** to that existing setup.
+
+Run it alongside EVE, comms, maps, killboards and the third-party tools you already trust — or use SENTINEL on its own as your Tactical Intelligence HQ.
+
+### **KEEP YOUR TOOLS. ADD INTELLIGENCE.**
+
+> **Built to become the tactical window you keep open every time you undock.**
 
 ---
 
@@ -211,7 +257,9 @@ This public repository exists so pilots can still follow the project's progress,
 
 **LIVE KILL MAP · UNIQUE TACTICAL LIVE MAP WARNING SYSTEM · MULTI-CHANNEL INTEL MAP**
 
-### **See the threat. Know the distance. Watch the route. React before it reaches you.**
+### **Protect yourself. Find the action. Know what's happening beyond your grid.**
+
+### **KEEP YOUR TOOLS. ADD INTELLIGENCE.**
 
 <br>
 
