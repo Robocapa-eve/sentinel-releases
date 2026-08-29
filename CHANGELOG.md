@@ -14,7 +14,7 @@ This document makes the **development journey public** while the application sou
 | | Status |
 |---|---|
 | **Latest public build** | `0.2.29-alpha` |
-| **Current development track** | Security & Reliability Foundation |
+| **Current development track** | Security, Reliability & Interface Usability |
 | **Platform** | Windows x64 |
 | **Release channel** | Alpha / pre-release |
 | **Source code** | Private |
@@ -32,11 +32,11 @@ This document makes the **development journey public** while the application sou
 
 ---
 
-# UNRELEASED // SECURITY & RELIABILITY FOUNDATION
+# UNRELEASED // SECURITY, RELIABILITY & INTERFACE USABILITY
 
 **Development milestone · 29 August 2026**
 
-The current development track is focused on making SENTINEL safer and more predictable before broader public testing. The goal is simple: tactical software should be trustworthy when it is running quietly in the background for hours.
+The current development track is focused on making SENTINEL safer, more predictable and more adaptable before broader public testing. Tactical software should remain trustworthy in the background while also staying readable during long sessions and across different display setups.
 
 ### For pilots
 
@@ -47,6 +47,7 @@ The current development track is focused on making SENTINEL safer and more predi
 - ⚙️ Improved dependency hygiene and ongoing vulnerability monitoring.
 - 🧪 Expanded automated validation before changes are accepted into the main development line.
 - 🔔 Improved reliability of native Windows tactical alert playback on the Python 3.12 runtime.
+- 🪟 Added persistent **100 / 110 / 120% HUD scaling** for the side intelligence panels while keeping Tactical Map rendering unchanged.
 
 ### Security engineering
 
@@ -63,12 +64,21 @@ The current development track is focused on making SENTINEL safer and more predi
 - Preserved synchronous FIFO alert playback while removing reliance on an unsupported `winsound` synchronization flag.
 - Added a dedicated regression test so the audio worker compatibility issue cannot silently return.
 
+### Interface usability engineering
+
+- Added a compact `− / UI % / +` control in the top bar and a matching control under Appearance settings.
+- The left and right intelligence HUDs scale as complete units, preserving typography, controls, spacing, badges and card proportions instead of enlarging text alone.
+- The Tactical Map, system nodes, labels, marker geometry, tooltips and map zoom remain independent from HUD scaling.
+- The selected HUD scale is remembered locally across restarts.
+- A viewport guard prevents enlarged side panels from squeezing the tactical map below its operational minimum width.
+- The 100%, 110% and 120% levels were visually validated on Windows, including the intentional scroll behavior of the enlarged left HUD.
+
 ### Continuous validation
 
 - 🧪 Automated Windows CI now validates SENTINEL on Python 3.12.
-- 🧪 Current automated suite: **86 tests**.
+- 🧪 Current automated suite: **89 tests**.
 - 🧪 Python source compilation is validated automatically.
-- 🧪 Frontend JavaScript syntax is validated automatically.
+- 🧪 Frontend JavaScript syntax is validated automatically, including the isolated HUD-scaling layer.
 - 🧪 Git whitespace/error checks run as part of CI.
 - 🔐 Security scanning and normal application CI are intentionally separate so failures remain easy to diagnose.
 
