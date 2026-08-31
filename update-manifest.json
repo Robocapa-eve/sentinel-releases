@@ -1,12 +1,12 @@
 {
   "schema": 1,
   "product": "SENTINEL",
-  "version": "0.2.29-alpha",
+  "version": "0.2.30-alpha",
   "channel": "alpha",
   "platform": "windows-x64",
-  "asset": "SENTINEL-Setup-0.2.29-alpha.exe",
-  "size": 25397387,
-  "sha256": "f5398cdc8f8e52cf7f98c91e333d6505b83f89a87bcff0747c98e9c64a48fc3f",
-  "published_at": "2026-08-28T23:41:35Z",
+  "asset": "SENTINEL-Setup-0.2.30-alpha.exe",
+  "size": 25987804,
+  "sha256": "fb4b810655a1904d5c4347b2e8b0ebbdad74a076c23611b0ab052a79392451ff",
+  "published_at": "2026-08-31T08:24:52Z",
   "release_repository": "Robocapa-eve/sentinel-releases"
 }
