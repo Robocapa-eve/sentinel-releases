@@ -1,5 +1,7 @@
 <div align="center">
 
+<img src="sentinel-brand.png" width="32" alt="SENTINEL Logo">
+
 # SENTINEL // TACTICAL INTELLIGENCE
 
 ### **Your Tactical Intelligence HQ for New Eden.**
@@ -15,7 +17,7 @@
 ![Status](https://img.shields.io/badge/STATUS-ACTIVE%20DEVELOPMENT-35c98b?style=flat-square)
 ![Channel](https://img.shields.io/badge/CHANNEL-ALPHA-4da3d9?style=flat-square)
 ![Platform](https://img.shields.io/badge/PLATFORM-WINDOWS-737d8c?style=flat-square)
-![Version](https://img.shields.io/badge/PUBLIC%20BUILD-0.2.29--alpha-8b6fd9?style=flat-square)
+![Version](https://img.shields.io/badge/PUBLIC%20BUILD-0.2.30--alpha-8b6fd9?style=flat-square)
 
 <br>
 
@@ -194,7 +196,7 @@ SENTINEL is designed to support gameplay decisions, not automate gameplay input.
 
 | | |
 |---|---|
-| **Latest public build** | `0.2.29-alpha` |
+| **Latest public build** | `0.2.30-alpha` |
 | **Channel** | Alpha / pre-release |
 | **Platform** | Windows x64 |
 | **Development** | Active |
