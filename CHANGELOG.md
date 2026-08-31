@@ -13,8 +13,8 @@ This document makes the **development journey public** while the application sou
 
 | | Status |
 |---|---|
-| **Latest public build** | `0.2.29-alpha` |
-| **Current development track** | Security, Reliability & Interface Usability |
+| **Latest public build** | `0.2.30-alpha` |
+| **Current development track** | Tactical Intelligence, Security & Release Validation |
 | **Platform** | Windows x64 |
 | **Release channel** | Alpha / pre-release |
 | **Source code** | Private |
@@ -32,58 +32,90 @@ This document makes the **development journey public** while the application sou
 
 ---
 
-# UNRELEASED // SECURITY, RELIABILITY & INTERFACE USABILITY
+# 0.2.30-alpha // TACTICAL INTELLIGENCE SYSTEM
 
-**Development milestone · 29 August 2026**
+**Public pre-release · 31 August 2026**
 
-The current development track is focused on making SENTINEL safer, more predictable and more adaptable before broader public testing. Tactical software should remain trustworthy in the background while also staying readable during long sessions and across different display setups.
+This release is the first major expansion of SENTINEL's **Tactical Intelligence System**. It broadens the operational picture across New Eden while deliberately keeping immediate warning ranges, native Windows audio and the familiar SOLO workflow predictable.
 
 ### For pilots
 
-- 🔐 Strengthened the boundary around SENTINEL's local Windows service.
-- 🔐 Improved validation of local application requests and browser-originated traffic.
-- 🔐 Hardened authentication callback handling used by EVE SSO.
-- 🔐 Added additional protection around local WebSocket connections.
-- ⚙️ Improved dependency hygiene and ongoing vulnerability monitoring.
-- 🧪 Expanded automated validation before changes are accepted into the main development line.
-- 🔔 Improved reliability of native Windows tactical alert playback on the Python 3.12 runtime.
-- 🪟 Added persistent **100 / 110 / 120% HUD scaling** for the side intelligence panels while keeping Tactical Map rendering unchanged.
+- 🛰️ Added MAP INTEL profiles: **SOLO, SAFE, ROAM, ROUTE, SCOUT and CUSTOM**.
+- 📡 Added Tactical Feed Depth options for **15J, 25J and 50J** strategic/tactical context.
+- 🧠 Added the advanced **Tactical Intelligence Feed** with system, jump distance, age, source, ISK context and zKill access where available.
+- 📊 Added **Tactical Picture** activity bands and trend context such as `RISING`, `STABLE` and `COOLING`.
+- 🔥 Added the first tactical overlay: **KILL HEAT**.
+- 🗺️ Live tactical events remain attached to their real New Eden systems and can stay visible at broad map scopes.
+- 🗺️ MAP FOCUS now shows the concrete focused solar system instead of only the focus mode.
+- 📌 System Tooltips now support **single-click pinning**, protected hover behavior, outside-click dismissal and `Escape` dismissal.
+- 🕒 Added **SYSTEM VERLAUF** for recent tactical history of the selected solar system directly inside the System Tooltip.
+- 📐 System Tooltips remain inside the map viewport and use internal scrolling when necessary.
+- 🧹 Feed clearing is hardened across classic feed, tactical feed, tactical summary and live map markers.
+- 👥 Local Scan now shows immediate Local Snapshot / Delta feedback separately from slower public ESI/zKill enrichment.
+- 🧭 System labels remain more stable while panning and zooming through dense map areas.
 
-### Security engineering
+### SOLO remains predictable
 
-- Added automated **full-history secret scanning** with Gitleaks.
-- Added automated **Python dependency vulnerability auditing** with `pip-audit`.
-- Security scans now run on relevant development changes and on a recurring weekly schedule.
-- A dependency audit immediately identified known issues in the previously allowed `cryptography 46.x` line; SENTINEL was moved to the patched `50.x` line and revalidated.
-- Hardened repository exclusions for credentials, tokens, private keys, certificates, signing material and local environment files.
-- Added dedicated `SECURITY.md`, `PRIVACY.md` and a proprietary software license to the private source repository.
+SOLO continues to use the classic SENTINEL Kill Range, Intel Range, native Windows audio and classic Live Intelligence Feed behavior.
 
-### Reliability engineering
+Returning to SOLO explicitly restores Monitoring to **`AUTO · MAIN`** and the current MAIN system. A true SENTINEL process start also returns to the predictable SOLO baseline, while tray hide/show does not repeatedly reset the active session.
 
-- Fixed a Windows native-audio compatibility issue exposed by CI on Python 3.12.
-- Preserved synchronous FIFO alert playback while removing reliance on an unsupported `winsound` synchronization flag.
-- Added a dedicated regression test so the audio worker compatibility issue cannot silently return.
+### Tactical context without wider danger alerts
 
-### Interface usability engineering
+Advanced MAP INTEL profiles can retain wider tactical context through Tactical Feed Depth without silently widening classic Kill/Intel warning ranges or native Windows audio ranges.
 
-- Added a compact `− / UI % / +` control in the top bar and a matching control under Appearance settings.
-- The left and right intelligence HUDs scale as complete units, preserving typography, controls, spacing, badges and card proportions instead of enlarging text alone.
-- The Tactical Map, system nodes, labels, marker geometry, tooltips and map zoom remain independent from HUD scaling.
-- The selected HUD scale is remembered locally across restarts.
-- A viewport guard prevents enlarged side panels from squeezing the tactical map below its operational minimum width.
-- The 100%, 110% and 120% levels were visually validated on Windows, including the intentional scroll behavior of the enlarged left HUD.
+This means a pilot can maintain a broad tactical picture while keeping immediate danger alerts focused on the smaller range selected for local warning behavior.
 
-### Continuous validation
+### Map truth and interaction
 
-- 🧪 Automated Windows CI now validates SENTINEL on Python 3.12.
-- 🧪 Current automated suite: **89 tests**.
-- 🧪 Python source compilation is validated automatically.
-- 🧪 Frontend JavaScript syntax is validated automatically, including the isolated HUD-scaling layer.
-- 🧪 Git whitespace/error checks run as part of CI.
-- 🔐 Security scanning and normal application CI are intentionally separate so failures remain easy to diagnose.
+- The active visible tactical feed is treated as the source of truth for live map event-marker visibility.
+- Multiple same-system events are grouped visually instead of stacking uncontrolled markers.
+- Marker and pulse lifetimes remain independently controlled by their existing settings.
+- Tactical feed rows expand without automatically moving or re-centering the map.
+- **SHOW ON MAP / AUF KARTE** remains the deliberate navigation action.
+- New events do not force camera movement.
 
-> [!NOTE]
-> This milestone improves the security baseline; it is not a claim that any desktop application can be made impossible to reverse engineer or completely free of vulnerabilities.
+### System Tooltip interaction
+
+System Tooltips now support a more deliberate two-stage interaction model:
+
+- **Hover** — temporary preview.
+- **Single click** — pins the tooltip to the selected system.
+
+A pinned tooltip remains open when the pointer leaves, cannot be stolen by neighboring hover events, switches when another system is clicked and closes by clicking outside or pressing `Escape`. Double-click remains the deliberate map-focus action.
+
+### Security, reliability & usability work included in this build
+
+- 🔐 Strengthened the boundary around SENTINEL's local Windows service and browser-originated requests.
+- 🔐 Hardened EVE SSO callback handling and local WebSocket protections.
+- 🔐 Added automated full-history secret scanning and dependency vulnerability auditing.
+- 🔐 Moved the affected `cryptography` dependency line to the patched 50.x series and revalidated the application.
+- 🔔 Improved reliability of native Windows tactical alert playback on Python 3.12.
+- 🪟 Added persistent **100 / 110 / 120% HUD scaling** for the side intelligence panels while leaving Tactical Map rendering independent.
+- ⚙️ Added additional repository exclusions for credentials, tokens, private keys, certificates and local environment material.
+
+### Validation
+
+0.2.30-alpha passed the release gates before public activation:
+
+- ✅ **SENTINEL CI**
+- ✅ **SENTINEL Security**
+- ✅ **SENTINEL Visual Smoke**
+- ✅ Windows Python 3.12 regression suite: **133 passed**
+- ✅ Python source compilation validation
+- ✅ Frontend JavaScript syntax validation
+- ✅ Git whitespace/error validation
+- ✅ Chromium 1920×1080 real-backend visual validation
+- ✅ Live Windows installation and startup validation
+- ✅ SOLO + `AUTO · MAIN` startup validation
+- ✅ Click-pinned System Tooltip interaction validation
+- ✅ Final Windows installer SHA-256 verification
+
+### Release delivery
+
+The final Windows installer was published to the dedicated public release channel and independently verified against its expected file size and SHA-256 digest before the public update manifest was advanced.
+
+[View the 0.2.30-alpha release](https://github.com/Robocapa-eve/sentinel-releases/releases/tag/v0.2.30-alpha)
 
 ---
 
@@ -128,7 +160,7 @@ This phase pushed SENTINEL from a map that displays information toward a map tha
 - 🛰️ Added a manual monitoring mode for scouts, parked characters and deliberate observation points.
 - 🗺️ Separated map camera movement from the monitoring origin — exploring the map no longer silently moves the point used for tactical alerts.
 - 🗺️ Improved semantic zoom and deep-system interaction across the tactical map.
-- 🗺️ Expanded system dossiers with direct tactical actions such as map focus, route display and zKill access.
+- 🗺️ Expanded System Tooltips with direct tactical actions such as map focus, route display and zKill access.
 - 🔔 Added native Windows alert playback that does not depend on browser focus.
 - 🔔 Added distinct audio profiles for different tactical events.
 - 🛰️ Refined the intel feed so own login/location events are not presented as ordinary hostile intelligence.
