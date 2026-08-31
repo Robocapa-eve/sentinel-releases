@@ -26,8 +26,8 @@
 </div>
 
 <p align="center">
-  <a href="https://raw.githubusercontent.com/Robocapa-eve/sentinel-releases/main/assets/screenshots/sentinel-tactical-intelligence-overview-full.webp">
-    <img src="assets/screenshots/sentinel-tactical-intelligence-overview.webp" width="520" alt="SENTINEL Tactical Intelligence Overview">
+  <a href="https://raw.githubusercontent.com/Robocapa-eve/sentinel-releases/main/assets/screenshots/sentinel-tactical-intelligence-overview-view.svg">
+    <img src="assets/screenshots/sentinel-tactical-intelligence-overview.webp" width="460" alt="SENTINEL Tactical Intelligence Overview">
   </a>
 </p>
 
@@ -143,7 +143,7 @@ LIVE MAP INDICATOR
           ↓
 VISUAL + NATIVE AUDIO WARNING
           ↓
-SYSTEM DOSSIER / ROUTE CONTEXT
+SYSTEM TOOLTIP / ROUTE CONTEXT
 ```
 
 This is the core SENTINEL philosophy:
@@ -191,7 +191,7 @@ Beyond the three defining systems, SENTINEL currently includes or is actively de
 - 📡 Persistent Live Intelligence Feed
 - 🧠 Explainable threat / risk context
 - 🔍 Local Scan workflow
-- 📁 Tactical System Dossiers
+- 📁 Tactical System Tooltips
 - 🔔 Native Windows Kill and Intel audio alerts
 - 🪟 Dedicated Windows application and system tray
 - 🎛️ Persistent 100 / 110 / 120% side-HUD scaling
