@@ -61,6 +61,28 @@ It combines live kill activity, Intel channels, New Eden map context, monitoring
 
 ---
 
+# ⚡ LATEST ENGINEERING SPRINT // 31 AUG → 1 SEP
+
+The last two calendar days were the largest architecture jump in SENTINEL so far.
+
+The project moved from shipping the public `0.2.30-alpha` Tactical Intelligence System to running a validated backend intelligence foundation with:
+
+- 🛰️ dedicated HTTPS/WSS Live Relay
+- 🧠 PostgreSQL 16-backed Tactical Memory
+- 🔄 completed-day reconciliation and safe missing-ID repair
+- 📦 a proven **13,962-killmail** historical production canary
+- 🕒 rolling **90-day UTC** retention
+- 🛡️ verified backup/restore operations
+- 🧠 Tactical Intelligence Brain **1A** for pilot behavior
+- 🧠 Tactical Intelligence Brain **1B** for systems, corporations and alliances
+- 🔐 hardened CI, security and repository integrity automation
+
+**Validation snapshot:** **224 tests passed** in the combined Windows/relay suite, **71 PostgreSQL-backed Intelligence tests passed**, and the latest 1B production checkpoint held roughly **480k canonical kills · 2.0M attacker rows · 7.8M item rows**.
+
+### 📡 [Read the full two-day engineering chronicle](CHANGELOG.md#-engineering-sprint--31-aug--1-sep-2026)
+
+---
+
 # THREE OPERATOR SYSTEMS DEFINE SENTINEL
 
 ## 💀 LIVE KILL MAP

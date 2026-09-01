@@ -37,6 +37,76 @@ This document makes the **development journey public** while the application sou
 
 ---
 
+# ⚡ ENGINEERING SPRINT // 31 AUG → 1 SEP 2026
+
+Two calendar days changed the shape of SENTINEL.
+
+The sprint started with a public Windows tactical-intelligence release and ended with a production-backed intelligence architecture: dedicated live transport, durable bounded Memory, completeness repair, backup/restore operations, two derived Intelligence Brain layers and a self-maintaining Git workflow.
+
+### The progression
+
+**1 · Public tactical system shipped**  
+`0.2.30-alpha` delivered MAP INTEL profiles, Tactical Feed Depth, Tactical Intelligence Feed, KILL HEAT, Tactical Picture, pinned System Tooltips, SYSTEM VERLAUF and the current public map/feed experience.
+
+**2 · Dedicated Live Relay built**  
+A production HTTPS/WSS relay was added with sequential public R2Z2 ingestion, bounded queues, reconnect/resume, snapshot/resync, explicit gap handling and slow-client isolation.
+
+**3 · SENTINEL gained durable Tactical Memory**  
+PostgreSQL 16 now stores recent canonical kill observations with victim, attacker, item, organization and source-provenance context.
+
+**4 · Memory learned to verify itself**  
+Completed UTC days can be reconciled against public zKill history. Demonstrated missing IDs can be repaired idempotently, with durable scheduler state across restarts.
+
+**5 · Historical repair was proven in production**  
+A bounded one-day historical canary durably processed **13,962 public killmails** before the project committed to its long-term storage policy.
+
+**6 · Full-history ambition was replaced with an operational decision**  
+Capacity and backup footprint were measured instead of guessed. SENTINEL deliberately chose a rolling **90-day UTC Memory** so recent behavior remains useful without turning the project into an unbounded archive.
+
+**7 · Recovery became part of the platform**  
+Verified PostgreSQL backups, SHA-256/archive validation, disposable restore drills, daily local scheduling, retention guards and operator-safe ownership were added.
+
+**8 · Tactical Intelligence Brain 1A came online**  
+The read-only intelligence layer can derive observed pilot ship/weapon usage, target preferences, recurring co-attacker relationships and historical loss-fit families with evidence, recency and confidence.
+
+**9 · Tactical Intelligence Brain 1B expanded the model**  
+The Brain now profiles recent behavior for systems, corporations and alliances, including attacker/victim hull patterns, UTC activity distributions and recurring co-attacking organizations.
+
+**10 · The repository itself was hardened**  
+`main` became canonical development truth, `infra/live-relay-v1` became the controlled promotion line, obsolete rollout branches/workflows were removed, expensive CI was path-scoped and a repository-local Branch Integrity Guard was added.
+
+### Hard validation numbers
+
+The engineering sprint closed with verifiable gates rather than a version-number claim:
+
+- **224 tests passed** in the combined Windows/relay repository suite on Windows / Python 3.12
+- **71 PostgreSQL-backed tests passed** in the Tactical Intelligence 1B production line
+- Python compile validation
+- frontend JavaScript syntax validation
+- Git whitespace validation
+- Gitleaks secret scanning
+- dependency audit
+- Visual Smoke coverage for UI-affecting changes
+- live HTTPS/TLS and R2Z2 ingestion checks
+- WebSocket hello/snapshot/live/ping/resync validation
+- Memory durability, reconciliation, retention and restore validation
+
+At the Tactical Intelligence 1B production checkpoint, the bounded Memory contained roughly:
+
+- **480k canonical kills**
+- **2.0M attacker rows**
+- **7.8M item rows**
+
+These values are operational snapshots, not fixed product promises.
+
+### Engineering philosophy proven during the sprint
+
+SENTINEL does not call every correlation a fact. Historical loss fits are not presented as current fits, recurring co-attackers are not automatically labeled fleet members, and route/roam reconstruction remains a separate future inference phase with explicit confidence.
+
+Likewise, the project did not advance the public updater just because the backend became `0.3.0-alpha`. The downloadable Windows client remains `0.2.30-alpha` until a real 0.3.0 installer is built, tested, published, verified and the update manifest is advanced **last**.
+
+---
+
 # 0.3.0-alpha // LIVE RELAY · ROLLING MEMORY · TACTICAL INTELLIGENCE BRAIN
 
 **Development milestone · 1 September 2026**  
@@ -153,12 +223,28 @@ Recent engineering work also includes:
 - private PostgreSQL network placement
 - narrow Gitleaks false-positive handling while real secret detection remains active
 
+## ⚙️ Repository & CI hardening
+
+The development repository now follows a deliberately narrow operating model:
+
+- `main` is canonical development truth
+- `infra/live-relay-v1` is the controlled production-promotion branch
+- approved promotions keep both commit-identical
+- historical feature/hotfix/rollout branches were audited and removed
+- one-shot rollout workflows were retired or made manual-only
+- Visual/Memory/soak CI is path-scoped to relevant changes
+- Security remains active on pull requests, weekly schedule and manual execution
+- a Branch Integrity Guard restores unauthorized direct `main` pushes and divergent `infra` pushes
+- safely merged same-repository PR branches clean themselves up automatically unless they received post-merge work
+
 ## 🧪 Validation
 
-The current Tactical Intelligence 1B production line passed:
+The current development line has passed:
 
-- **71 PostgreSQL-backed tests**
+- **224-test combined Windows/relay repository suite**
+- **71 PostgreSQL-backed Tactical Intelligence 1B tests**
 - Python compile validation
+- frontend JavaScript syntax validation
 - Docker Compose validation
 - backup health and disposable restore drills
 - live HTTPS/TLS health
