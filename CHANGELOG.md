@@ -14,21 +14,168 @@ This document makes the **development journey public** while the application sou
 | | Status |
 |---|---|
 | **Latest public build** | `0.2.30-alpha` |
-| **Current development track** | Tactical Intelligence, Security & Release Validation |
+| **Current development line** | `0.3.0-alpha` |
+| **Current development track** | Live Relay · Rolling Tactical Memory · Tactical Intelligence Brain |
 | **Platform** | Windows x64 |
 | **Release channel** | Alpha / pre-release |
 | **Source code** | Private |
 | **Public development history** | This document |
 
+> [!IMPORTANT]
+> `0.3.0-alpha` is currently a **development line**, not a published Windows installer. The public update manifest intentionally remains on `0.2.30-alpha` until a real 0.3.0 installer has been built, verified and published.
+
 ### Signal legend
 
 - 🛰️ **INTEL** — live intelligence, threat context and monitoring
 - 🗺️ **MAP** — New Eden navigation, system awareness and tactical visualization
+- 🧠 **MEMORY** — bounded tactical history and explainable behavioral context
 - 🔔 **ALERT** — notifications, sounds and attention management
 - 🪟 **WINDOWS** — native desktop integration and installer behavior
-- 🔐 **SECURITY** — authentication, local service hardening and supply-chain safety
+- 🔐 **SECURITY** — authentication, service hardening and supply-chain safety
 - ⚙️ **ENGINEERING** — architecture, reliability and development infrastructure
 - 🧪 **VALIDATION** — automated tests and quality gates
+
+---
+
+# 0.3.0-alpha // LIVE RELAY · ROLLING MEMORY · TACTICAL INTELLIGENCE BRAIN
+
+**Development milestone · 1 September 2026**  
+**Not yet a public Windows release**
+
+This milestone moves SENTINEL beyond a tactical live-map client and establishes the backend foundation for a **living tactical-intelligence system**.
+
+The core principle is simple:
+
+> **Live data tells SENTINEL what is happening now. Memory tells it what has been happening. Intelligence turns those observations into explainable context.**
+
+## 🛰️ Dedicated SENTINEL Live Relay
+
+SENTINEL now operates a dedicated production relay at `relay.sentinel-eve.de`.
+
+The relay can:
+
+- consume sequential public R2Z2/zKill observations
+- normalize live-kill packets
+- maintain bounded live buffers
+- distribute events through secure WebSockets
+- resume clients by source sequence
+- provide snapshot/resync recovery
+- isolate slow clients through bounded backpressure handling
+- expose source/pipeline health and latency telemetry
+
+The current Windows application still treats **Direct R2Z2 as the authoritative live source**. Relay cutover is not automatic and remains a separate explicit future decision.
+
+## 🧠 Rolling 90-day Tactical Memory
+
+A PostgreSQL-backed Memory layer now records recent public combat observations for tactical analysis.
+
+Current production policy:
+
+- rolling **90-day UTC horizon**
+- canonical identity by killmail ID
+- victim and attacker observations
+- attacker ship/weapon context
+- victim item / historical loss-fit data
+- corporation/alliance context where available
+- source provenance and chronology
+- automatic bounded retention
+
+A much deeper public-history archive was capacity-tested during development. SENTINEL intentionally chose the bounded 90-day model instead: it provides recent behavioral context while keeping storage and operating cost predictable.
+
+## 🔄 Reconciliation & safe repair
+
+Memory is not treated as infallible just because data was received once.
+
+The new reconciliation system can:
+
+- compare completed UTC days with public zKill history
+- track daily totals and ID/hash observations
+- identify explicit missing kill IDs
+- retrieve public raw daily archives only when a real gap is demonstrated
+- merge repairs idempotently
+- preserve scheduler state across restart
+
+SENTINEL does **not** claim to possess every killmail in EVE. Public-source limits remain part of the truth model.
+
+## 🧠 Tactical Intelligence Brain 1A — Pilot behavior
+
+The first derived intelligence layer can analyze recent observed pilot behavior:
+
+- attacker ship usage
+- weapon usage
+- target preferences
+- recurring co-attacker relationships
+- historical loss-fit families
+- sample counts, recency and confidence
+
+SENTINEL deliberately avoids fake certainty:
+
+- a historical loss fit is **not** a current fit
+- recurring co-attackers are **not automatically fleet members**
+- observations and inferences remain distinguishable
+
+## 🧠 Tactical Intelligence Brain 1B — Systems & organizations
+
+The second layer expands from individual pilots to locations and organizations:
+
+- solar-system activity profiles
+- corporation activity profiles
+- alliance activity profiles
+- top observed attackers and organizations
+- attacker/victim hull patterns
+- UTC-hour activity distributions
+- attacker-count context
+- recurring co-attacking corporation/alliance relationships
+- evidence/confidence metadata
+
+Roam and route reconstruction are intentionally **not** part of 1B. Movement inference will be developed as its own explicit-confidence layer.
+
+## 🛡️ Backup, recovery and zero-cost operation
+
+The Memory platform now includes:
+
+- verified PostgreSQL backups
+- SHA-256 validation
+- archive validation
+- disposable restore drills
+- daily local backup scheduling
+- production recovery documentation
+
+SENTINEL also adopted a **GitHub zero-cost policy**: production database storage is not designed around paid GitHub Artifacts, Packages or Codespaces. Durable tactical data stays on the existing project infrastructure.
+
+## 🔐 Reliability & security hardening
+
+Recent engineering work also includes:
+
+- separate long-running schema-migration timeout while normal DB operations remain tightly bounded
+- production recovery of a queued Memory batch after a real migration-timeout incident
+- read-only Tactical Intelligence database access
+- private PostgreSQL network placement
+- narrow Gitleaks false-positive handling while real secret detection remains active
+
+## 🧪 Validation
+
+The current Tactical Intelligence 1B production line passed:
+
+- **71 PostgreSQL-backed tests**
+- Python compile validation
+- Docker Compose validation
+- backup health and disposable restore drills
+- live HTTPS/TLS health
+- live R2Z2 ingestion
+- durable Memory-write validation
+- WebSocket hello/snapshot/live/ping/resync validation
+- 90-day retention health
+- reconciliation health
+- Tactical Intelligence production canaries
+
+At the latest deployment gate the bounded Memory contained roughly **480k canonical kills**, **2.0M attacker rows** and **7.8M item rows**. These are operational snapshots, not fixed product promises.
+
+## What pilots see today vs. what is being built
+
+The public Windows build remains **0.2.30-alpha** and already includes the Tactical Intelligence System, MAP INTEL profiles, KILL HEAT, System Tooltips and related map improvements.
+
+The new 0.3.0 Memory/Brain products are currently **backend/internal intelligence capabilities**. Their Windows UI integration comes after the data and truth model is proven.
 
 ---
 
@@ -36,84 +183,30 @@ This document makes the **development journey public** while the application sou
 
 **Public pre-release · 31 August 2026**
 
-This release is the first major expansion of SENTINEL's **Tactical Intelligence System**. It broadens the operational picture across New Eden while deliberately keeping immediate warning ranges, native Windows audio and the familiar SOLO workflow predictable.
+0.2.30-alpha was the first major expansion of SENTINEL's Tactical Intelligence System while preserving predictable SOLO behavior.
 
 ### For pilots
 
-- 🛰️ Added MAP INTEL profiles: **SOLO, SAFE, ROAM, ROUTE, SCOUT and CUSTOM**.
-- 📡 Added Tactical Feed Depth options for **15J, 25J and 50J** strategic/tactical context.
-- 🧠 Added the advanced **Tactical Intelligence Feed** with system, jump distance, age, source, ISK context and zKill access where available.
-- 📊 Added **Tactical Picture** activity bands and trend context such as `RISING`, `STABLE` and `COOLING`.
-- 🔥 Added the first tactical overlay: **KILL HEAT**.
-- 🗺️ Live tactical events remain attached to their real New Eden systems and can stay visible at broad map scopes.
-- 🗺️ MAP FOCUS now shows the concrete focused solar system instead of only the focus mode.
-- 📌 System Tooltips now support **single-click pinning**, protected hover behavior, outside-click dismissal and `Escape` dismissal.
-- 🕒 Added **SYSTEM VERLAUF** for recent tactical history of the selected solar system directly inside the System Tooltip.
-- 📐 System Tooltips remain inside the map viewport and use internal scrolling when necessary.
-- 🧹 Feed clearing is hardened across classic feed, tactical feed, tactical summary and live map markers.
-- 👥 Local Scan now shows immediate Local Snapshot / Delta feedback separately from slower public ESI/zKill enrichment.
-- 🧭 System labels remain more stable while panning and zooming through dense map areas.
+- 🛰️ MAP INTEL profiles: **SOLO, SAFE, ROAM, ROUTE, SCOUT and CUSTOM**.
+- 📡 Tactical Feed Depth: **15J, 25J and 50J**.
+- 🧠 Advanced Tactical Intelligence Feed.
+- 📊 Tactical Picture activity trends.
+- 🔥 First **KILL HEAT** overlay.
+- 🗺️ Real-system live tactical markers and improved MAP FOCUS.
+- 📌 Click-pinned System Tooltips with protected hover behavior.
+- 🕒 **SYSTEM VERLAUF** recent system history.
+- 🧹 Hardened feed clearing across tactical surfaces.
+- 👥 Faster Local Snapshot / Delta feedback.
+- 🧭 Improved map-label stability during pan/zoom.
 
-### SOLO remains predictable
+### Validation & release delivery
 
-SOLO continues to use the classic SENTINEL Kill Range, Intel Range, native Windows audio and classic Live Intelligence Feed behavior.
-
-Returning to SOLO explicitly restores Monitoring to **`AUTO · MAIN`** and the current MAIN system. A true SENTINEL process start also returns to the predictable SOLO baseline, while tray hide/show does not repeatedly reset the active session.
-
-### Tactical context without wider danger alerts
-
-Advanced MAP INTEL profiles can retain wider tactical context through Tactical Feed Depth without silently widening classic Kill/Intel warning ranges or native Windows audio ranges.
-
-This means a pilot can maintain a broad tactical picture while keeping immediate danger alerts focused on the smaller range selected for local warning behavior.
-
-### Map truth and interaction
-
-- The active visible tactical feed is treated as the source of truth for live map event-marker visibility.
-- Multiple same-system events are grouped visually instead of stacking uncontrolled markers.
-- Marker and pulse lifetimes remain independently controlled by their existing settings.
-- Tactical feed rows expand without automatically moving or re-centering the map.
-- **SHOW ON MAP / AUF KARTE** remains the deliberate navigation action.
-- New events do not force camera movement.
-
-### System Tooltip interaction
-
-System Tooltips now support a more deliberate two-stage interaction model:
-
-- **Hover** — temporary preview.
-- **Single click** — pins the tooltip to the selected system.
-
-A pinned tooltip remains open when the pointer leaves, cannot be stolen by neighboring hover events, switches when another system is clicked and closes by clicking outside or pressing `Escape`. Double-click remains the deliberate map-focus action.
-
-### Security, reliability & usability work included in this build
-
-- 🔐 Strengthened the boundary around SENTINEL's local Windows service and browser-originated requests.
-- 🔐 Hardened EVE SSO callback handling and local WebSocket protections.
-- 🔐 Added automated full-history secret scanning and dependency vulnerability auditing.
-- 🔐 Moved the affected `cryptography` dependency line to the patched 50.x series and revalidated the application.
-- 🔔 Improved reliability of native Windows tactical alert playback on Python 3.12.
-- 🪟 Added persistent **100 / 110 / 120% HUD scaling** for the side intelligence panels while leaving Tactical Map rendering independent.
-- ⚙️ Added additional repository exclusions for credentials, tokens, private keys, certificates and local environment material.
-
-### Validation
-
-0.2.30-alpha passed the release gates before public activation:
-
-- ✅ **SENTINEL CI**
-- ✅ **SENTINEL Security**
-- ✅ **SENTINEL Visual Smoke**
+- ✅ SENTINEL CI
+- ✅ SENTINEL Security
+- ✅ SENTINEL Visual Smoke
 - ✅ Windows Python 3.12 regression suite: **133 passed**
-- ✅ Python source compilation validation
-- ✅ Frontend JavaScript syntax validation
-- ✅ Git whitespace/error validation
-- ✅ Chromium 1920×1080 real-backend visual validation
-- ✅ Live Windows installation and startup validation
-- ✅ SOLO + `AUTO · MAIN` startup validation
-- ✅ Click-pinned System Tooltip interaction validation
 - ✅ Final Windows installer SHA-256 verification
-
-### Release delivery
-
-The final Windows installer was published to the dedicated public release channel and independently verified against its expected file size and SHA-256 digest before the public update manifest was advanced.
+- ✅ Public release/update-manifest activation
 
 [View the 0.2.30-alpha release](https://github.com/Robocapa-eve/sentinel-releases/releases/tag/v0.2.30-alpha)
 
@@ -123,148 +216,52 @@ The final Windows installer was published to the dedicated public release channe
 
 **Public pre-release · 28 August 2026**
 
-This milestone completed the first end-to-end update path. SENTINEL can now detect a newer published build, verify the installer and hand the update over to a controlled Windows installation flow.
-
-### For pilots
-
-- 🪟 Added in-app update availability checks.
-- 🪟 Added an explicit **one-click update** flow.
-- 🔐 Installer downloads are verified against their expected **SHA-256** digest before execution.
-- 🪟 SENTINEL can close for installation and restart after a successful update.
-- ⚙️ Update failures are handled without breaking normal monitoring operation.
-
-### Engineering notes
-
-- Introduced a dedicated public release/update channel separate from the private source repository.
-- Update metadata validates expected product, platform, release channel and version information.
-- Downloaded installers are staged under SENTINEL's local application data area.
-- Installer filename and expected digest are validated before installation is allowed.
-- The public update manifest acts as the activation point for a release; release assets are published **before** the manifest is advanced.
-
-### Public test result
-
-The `0.2.28 → 0.2.29-alpha` path was used as an end-to-end update validation covering download, SHA-256 verification, unattended installer hand-off and automatic restart.
+- Added in-app update discovery.
+- Added explicit one-click update flow.
+- Added installer filename and metadata validation.
+- Added SHA-256 verification before execution.
+- Added clean application shutdown / installer hand-off / restart.
+- Verified the real `0.2.28 → 0.2.29-alpha` update path.
 
 [View the 0.2.29-alpha release](https://github.com/Robocapa-eve/sentinel-releases/releases/tag/v0.2.29-alpha)
 
 ---
 
+# 0.2.28-alpha // UPDATE DISCOVERY
+
+- Added public release discovery through `Robocapa-eve/sentinel-releases`.
+- Added startup, periodic and manual update checks.
+- Added current/update-available/channel-error states.
+- Added installed/latest version display.
+- Added update-manifest validation.
+
+---
+
 # 0.2.27-alpha // TACTICAL MONITORING
 
-This phase pushed SENTINEL from a map that displays information toward a map that understands **where the pilot is actually monitoring from**.
-
-### For pilots
-
-- 🛰️ Added a dedicated **monitoring origin** for threat, intel and alert relevance.
-- 🛰️ Added **AUTO / MAIN-follow** behavior for pilots who want SENTINEL to track their active EVE character automatically.
-- 🛰️ Added a manual monitoring mode for scouts, parked characters and deliberate observation points.
-- 🗺️ Separated map camera movement from the monitoring origin — exploring the map no longer silently moves the point used for tactical alerts.
-- 🗺️ Improved semantic zoom and deep-system interaction across the tactical map.
-- 🗺️ Expanded System Tooltips with direct tactical actions such as map focus, route display and zKill access.
-- 🔔 Added native Windows alert playback that does not depend on browser focus.
-- 🔔 Added distinct audio profiles for different tactical events.
-- 🛰️ Refined the intel feed so own login/location events are not presented as ordinary hostile intelligence.
-
-### Tactical design principle
-
-A pilot should be able to **look somewhere else without accidentally listening somewhere else**. Map focus, current character location and monitoring origin are therefore treated as separate concepts.
-
-### Engineering notes
-
-- Threat relevance, intel range, kill relevance, scout data, watchlist events and native audio use the monitoring origin rather than the visual camera position.
-- Native audio uses queued sequential playback to avoid alert overlap.
-- Clearing the visible feed no longer destroys the tactical history required by other parts of the application.
+- Added continuous New Eden deep zoom and semantic detail.
+- Separated map camera focus from tactical Monitoring.
+- Added AUTO · MAIN and manual monitoring origins.
+- Unified tactical distance/relevance around the active Monitoring origin.
+- Added functional System Tooltip actions.
+- Added native Windows tactical alerts.
+- Hardened visible-feed clearing and internal event separation.
 
 ---
 
 # 0.2.26-alpha // NATIVE WINDOWS APPLICATION
 
-SENTINEL became a real Windows desktop application rather than merely a local web interface.
-
-### For pilots
-
-- 🪟 Added a native Windows application shell.
-- 🪟 Added system tray operation so SENTINEL can keep monitoring while the main window is hidden.
-- 🪟 Closing the window hides the interface instead of terminating monitoring.
-- 🪟 Added tray actions for opening SENTINEL, accessing logs, restarting and exiting.
-- 🪟 Added single-instance behavior to prevent accidental duplicate application sessions.
-- 🪟 Added a native WebView window for the tactical interface.
-- 🪟 Added an installable Windows build and installer workflow.
-- ⚙️ Application logs moved to the user's local application data directory.
-
-### EVE tool coexistence
-
-- SENTINEL uses its own local listener on **`127.0.0.1:18765`**.
-- The EVE SSO callback uses the same dedicated listener.
-- The port choice was deliberately separated from other EVE companion software so SENTINEL can coexist with tools such as EVE Canary.
-
-### Engineering notes
-
-- Introduced PyInstaller OneFolder packaging for the Windows application.
-- Introduced an Inno Setup installer.
-- Established separate install and runtime-data locations under the user's local profile.
-- Added release integrity material including installer SHA-256 output.
+- Added the native Windows application shell and WebView2 interface.
+- Added system tray/background operation.
+- Added rotating production logs.
+- Added Windows installer infrastructure.
+- Added SHA-256/update-manifest generation.
+- Moved the local service to dedicated port `18765`.
 
 ---
 
-# 0.2.25-alpha // TACTICAL FOUNDATION
+## Release trust
 
-This milestone represents the early foundation on which the current SENTINEL architecture was built.
+A public version becomes active for installed clients only after its real Windows installer exists, has been verified and the public `update-manifest.json` is advanced **last**.
 
-### Core capability foundation
-
-- 🛰️ EVE Online SSO / ESI character connectivity.
-- 🛰️ Character and location-aware monitoring foundations.
-- 🛰️ EVE chat/log ingestion for intelligence parsing.
-- 🛰️ zKill-based kill intelligence integration.
-- 🗺️ New Eden universe data and system-graph foundations.
-- 🗺️ Interactive tactical map direction established.
-- 🛰️ Threat-analysis and system-context foundations.
-- ⚙️ FastAPI local backend with a web-based tactical frontend.
-
-The focus at this stage was not polish. It was proving that live EVE data, local intel, kill information and the New Eden map could be brought together into one tactical workspace.
-
----
-
-# DEVELOPMENT PRINCIPLES
-
-### Local-first where practical
-
-SENTINEL is designed as a Windows companion application. Local application state, logs and monitoring behavior are kept on the user's machine where the architecture allows it.
-
-### Private source, public progress
-
-The source repository is intentionally private. Public releases, this development log and future release documentation are published here so pilots can still follow the project's direction and maturity.
-
-### Tactical clarity over feature count
-
-A new feature is useful only if a pilot can understand what it means during actual gameplay. SENTINEL therefore prioritizes clear monitoring origin, range context, explicit actions and visible state over hidden automation.
-
-### Alpha means development
-
-SENTINEL is still an alpha project. Interfaces, behavior and internal systems may change as testing exposes better solutions.
-
----
-
-# WHAT COMES NEXT?
-
-The next security/release-trust layers under consideration include:
-
-- 🔐 Windows executable and installer **code signing**.
-- 🔐 Cryptographically **signed update metadata** in addition to SHA-256 integrity verification.
-- ⚙️ Further build and dependency reproducibility.
-- 🔐 Additional hardening of high-value application logic in distributed binaries.
-- 🛰️ Continued development of tactical intelligence, mapping and threat-analysis capabilities.
-
-Specific features and timing are intentionally not promised until they are tested and ready to enter the public development line.
-
----
-
-## About this log
-
-This is a curated public engineering history, not a dump of private commits or security-sensitive implementation details. Entries are written to show both **what changed for the pilot** and **what engineering milestone made it possible**.
-
-SENTINEL is an independent third-party project for EVE Online. EVE Online and related marks are property of CCP Games. Publication of SENTINEL does not imply endorsement by CCP Games.
-
-**Developer:** Robocapa  
-**Project:** SENTINEL // Tactical Intelligence
+SENTINEL is an independent third-party application for EVE Online and is not affiliated with or endorsed by CCP Games.
