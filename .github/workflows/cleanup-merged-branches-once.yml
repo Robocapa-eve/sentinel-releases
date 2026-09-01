@@ -1,0 +1,55 @@
+name: One-Time Safe Merged Branch Cleanup
+
+on:
+  push:
+    branches: [main]
+
+permissions:
+  contents: write
+  pull-requests: read
+
+jobs:
+  cleanup:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Delete safely merged same-repository branches
+        shell: bash
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
+
+          gh api "/repos/${GITHUB_REPOSITORY}/pulls?state=closed&base=main&per_page=100" \
+            --jq '.[] | select(.merged_at != null) | [.head.ref, .head.sha, .head.repo.full_name] | @tsv' |
+          while IFS=$'\t' read -r branch merged_head head_repo; do
+            [[ -z "${branch:-}" ]] && continue
+            [[ "$head_repo" != "$GITHUB_REPOSITORY" ]] && continue
+            [[ "$branch" == "main" ]] && continue
+
+            ref_json="$(gh api "/repos/${GITHUB_REPOSITORY}/git/ref/heads/${branch}" 2>/dev/null || true)"
+            [[ -z "$ref_json" ]] && continue
+
+            current_sha="$(jq -r '.object.sha' <<<"$ref_json")"
+            if [[ "$current_sha" == "$merged_head" ]]; then
+              echo "Deleting safely merged branch: $branch"
+              gh api --method DELETE "/repos/${GITHUB_REPOSITORY}/git/refs/heads/${branch}"
+            else
+              echo "Preserving $branch: post-merge work detected"
+            fi
+          done
+
+      - name: Remove one-time cleanup workflow
+        shell: bash
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
+          path='.github/workflows/cleanup-merged-branches-once.yml'
+          workflow_sha="$(gh api "/repos/${GITHUB_REPOSITORY}/contents/${path}?ref=main" --jq '.sha')"
+          gh api \
+            --method DELETE \
+            "/repos/${GITHUB_REPOSITORY}/contents/${path}" \
+            -f message='chore: remove one-time merged-branch cleanup workflow' \
+            -f sha="$workflow_sha" \
+            -f branch='main' >/dev/null
